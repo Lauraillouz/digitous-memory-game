@@ -20,24 +20,17 @@ class App extends React.Component {
   getImages = () => {
     const imagesInfo = this.state.images;
     const showImages = imagesInfo.map((image) => <div>{image.URL}</div>);
+    console.log("clic");
     return showImages;
   };
-
-  
-  showGrid(){
-    return <Grid />
-  }
 
   render() {
     return (
       <div>
         <h1>Memory Card</h1>
-        
-        <Button onClick={(showGrid) => {
-    return <Grid />
-  }} />
+
+        <Button onClick={() => this.getImages()} />
         {/* <GameOver /> */}
-        
       </div>
     );
   }

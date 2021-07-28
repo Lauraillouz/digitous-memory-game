@@ -5,7 +5,7 @@ class Button extends React.Component {
     return (
       <div>
 
-          <button className="" onClick={() => this.props.Grid}>normal</button>
+          <button className="">jouer</button>
           {/* <button className="" onClick={() => this.chooseDifficulty()}>normal</button>
           <button className="" onClick={() => this.chooseDifficulty()}>Difficult</button>
           <button className="" onClick={() => this.chooseDifficulty()}>hardcore</button> */}
