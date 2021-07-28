@@ -4,7 +4,9 @@ import React from "react";
 import Button from "./component/Button";
 import GameOver from "./component/GameOver";
 import Grid from "./component/Grid";
-import Css from "./App.css";
+
+// CSS
+import "./App.css";
 
 // Import json
 import images from "./images.json";
@@ -15,7 +17,7 @@ class App extends React.Component {
     this.state = {
       score: 0,
       images: images,
-      isPlaying: false,
+      isPlaying: true,
     };
   }
 

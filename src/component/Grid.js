@@ -3,11 +3,17 @@ import React from "react";
 class Grid extends React.Component {
   render() {
     return (
-      <div>
+      <div className="flex">
         {this.props.images.map((image) => {
-          return <img src={image.URL} alt={image.name} key={image.id}></img>
+          return (
+            <img
+              className="card resize"
+              src={image.URL}
+              alt={image.name}
+              key={image.id}
+            ></img>
+          );
         })}
-        
       </div>
     );
   }
