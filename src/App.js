@@ -9,6 +9,8 @@ class App extends React.Component {
       <div>
         <h1>Memory Card</h1>
         <Button />
+        {/* <GameOver /> */}
+        
       </div>
     );
   }
