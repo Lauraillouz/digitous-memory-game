@@ -19,16 +19,14 @@ class App extends React.Component {
       isPlaying: false,
     };
   }
-
-  handleclick() {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        isPlaying: true,
-      };
-    });
-  }
-
+handleclick(){
+  this.setState((prevState) => {
+    return {
+      ...prevState, 
+      isPlaying: true,
+    }
+  });
+};
   render() {
     return (
       <div className="container">
@@ -36,13 +34,11 @@ class App extends React.Component {
           <h1>Memory Card</h1>
           <span>by Classy glassy</span>
         </div>
-        <div className="flex">
-          {this.state.isPlaying ? (
-            <Grid images={this.state.images} />
-          ) : (
-            <Button onClick={() => this.handleclick()} />
-          )}
-        </div>
+        {this.state.isPlaying ? (
+          <Grid images={this.state.images} />
+        ) : (
+          <Button onClick={()=>this.handleclick()}/>
+        )}
       </div>
     );
   }
