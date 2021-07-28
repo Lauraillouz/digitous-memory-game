@@ -5,6 +5,11 @@ class GameOver extends React.Component {
     return (
       <div>
         <h1>GameOver</h1>
+        <div>
+           <p className="">point:</p> 
+           <p className="">time:</p>
+        </div>
+           <button className="" onClick={() => this.replay()}>replay</button> 
       </div>
     );
   }
