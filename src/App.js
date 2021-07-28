@@ -23,12 +23,19 @@ class App extends React.Component {
     return showImages;
   };
 
+  
+  showGrid(){
+    return <Grid />
+  }
+
   render() {
     return (
       <div>
         <h1>Memory Card</h1>
-        <Grid images={this.state.images} getImages={this.getImages} />
-        <Button />
+        
+        <Button onClick={(showGrid) => {
+    return <Grid />
+  }} />
         {/* <GameOver /> */}
         
       </div>
