@@ -29,6 +29,8 @@ class App extends React.Component {
         <h1>Memory Card</h1>
         <Grid images={this.state.images} getImages={this.getImages} />
         <Button />
+        {/* <GameOver /> */}
+        
       </div>
     );
   }
