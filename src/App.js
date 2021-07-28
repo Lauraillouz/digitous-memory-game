@@ -31,23 +31,17 @@ class App extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
+ 
       <div className= "container">
         <div className="head">
           <h1>Memory Card</h1>
           <span>by Classy glassy</span>
-        </div>
-        <Button />
-=======
-      <div>
-        <h1>Memory Card</h1>
-        
+        </div>        
         <Button onClick={(showGrid) => {
     return <Grid />
   }} />
         {/* <GameOver /> */}
         
->>>>>>> b21c75aa49a9cbcb62eeb3977d6fe1caeb48de11
       </div>
     );
   }
