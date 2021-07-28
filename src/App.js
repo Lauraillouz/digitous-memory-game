@@ -1,5 +1,4 @@
 import React from "react";
-
 // Components
 import Button from "./component/Button";
 import GameOver from "./component/GameOver";
@@ -20,7 +19,14 @@ class App extends React.Component {
       isPlaying: true,
     };
   }
-
+handleclick(){
+  this.setState((prevState) => {
+    return {
+      ...prevState, 
+      isPlaying: true,
+    }
+  });
+};
   render() {
     return (
       <div className="container">
@@ -31,7 +37,7 @@ class App extends React.Component {
         {this.state.isPlaying ? (
           <Grid images={this.state.images} />
         ) : (
-          <Button />
+          <Button onClick={()=>this.handleclick()}/>
         )}
       </div>
     );
