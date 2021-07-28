@@ -53,11 +53,33 @@ button:hover {
 /* Card */
 .card {
   background-image: url();
+  position: relative;
 }
 .resize {
   width: 100px;
+  height: 100px;
 }
 .flex {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+}
+.restrict {
+  width: 900px;
+  margin: auto 0;
+}
+.margin {
+  margin: 10px;
+}
+.wrap {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: black;
+  z-index: 999;
 }
