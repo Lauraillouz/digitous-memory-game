@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 class GameOver extends React.Component {
 
@@ -16,7 +17,7 @@ class GameOver extends React.Component {
            <p className="">point:</p> 
            <p className="">time:</p>
         </div>
-           <button className="" onClick={() => this.replay()}>replay</button> 
+           <Button onClick={() => this.replay()}>replay</Button> 
       </div>
     );
   }
