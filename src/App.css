@@ -1,1 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");/* h1 Press Start*/
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');/* h3 fredericka*/
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');/*italic Font for by groupName*/
+
+body {
+    padding: 0;
+    margin: 0;
+    /* background*/
+    background: url("https://coolwallpapers.me/th700/5410601-galaxy-wallpaper.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/* main container*/
+.container{
+    /* background: rgba(198, 212, 113, 0.1); */
+    padding: 1rem;
+    text-align: center;
+}
+/* Heading*/
+.head{
+    padding: 1rem;
+    margin: 1rem;
+}
+h1{
+    font-family: 'Press Start 2P';
+    font-size: 2.5rem;
+}
+span{
+    font-family: 'Marck Script', cursive;/*italic Font for by Classy glassy*/
+    font-size: 2rem;
+    }
+h3{
+    font-family: 'Fredericka the Great', cursive;
+}
+/* Button*/
+button{
+    color :rgb(250, 244, 244);
+    background-color: rgb(5, 3, 1);
+    padding: .7rem;
+    font-family: 'Press Start 2P';
+    border-radius: 1.2rem;
+}
+button:hover {
+    color :rgb(5, 3, 1);
+    background-color: rgb(250, 244, 244);
+    
+  }
+/* Card*/
+.card{
+    background-image: url();
+}
