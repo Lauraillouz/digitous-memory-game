@@ -3,6 +3,7 @@ import React from "react";
 import Button from "./component/Button";
 import GameOver from "./component/GameOver";
 import Grid from "./component/Grid";
+import Test from "./component/Test";
 
 // CSS
 import "./App.css";
@@ -19,6 +20,17 @@ class App extends React.Component {
       isPlaying: false,
     };
   }
+
+  shuffle = (arr) => {
+    for (let i = 0; i > arr.length; i++) {
+      let randomId = Math.floor(Math.random() * arr.length);
+      let copyCurrent = { ...arr[i] };
+      let copyRandom = { ...arr[randomId] };
+      arr[i] = copyRandom;
+      arr[randomId] = copyCurrent;
+    }
+    return arr;
+  };
 
   handleclick() {
     this.setState((prevState) => {
