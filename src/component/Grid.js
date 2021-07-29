@@ -1,20 +1,33 @@
 import React from "react";
 
+
 // Keys
 import { v4 as uuid } from "uuid";
 
 class Grid extends React.Component {
   constructor() {
     super();
+     const deck = this.props.images
+    .concat(this.props.images)
+    .sort(() => Math.random() - 0.5) 
+    .map(face => { 
+      return {
+        content: face,  
+        reveal: false,  
+      }
+    }) 
     this.state = {
       showing: [],
       showingNames: [],
       isMatching: [],
+      deck: "",
+      firstCard: null,
+      match: false,
     };
   }
 
-  clickCard = (imageId, imageName) => {
-    let imagesShowing = this.state.showing.length;
+ clickCard = (imageId, imageName) => {
+  let imagesShowing = this.state.showing.length;
     if (imagesShowing < 2) {
       this.setState((prevState) => ({
         ...prevState,
@@ -37,25 +50,11 @@ class Grid extends React.Component {
     }
   };
 
-  /* 
-    let checkMatchingImages = this.state.isMatching.length;
-    if (
-      checkMatchingImages === 2 &&
-      this.state.isMatching[0] === this.state.isMatching[1]
-    ) {
-      this.setState((prevState) => ({
-        ...prevState,
-        isMatching: [...prevState.isMatching, imageName],
-        showingNames: [],
-      }));
-    }
-    console.log(this.state.isMatching);
-  }; */
-
+  
   render() {
     return (
       <div className="flex restrict">
-        {this.props.images.map((image) => {
+        {this.props.images.sort(() => Math.random() - 0.5).map((image) => {
           return (
             <div className="wrap margin">
               <img

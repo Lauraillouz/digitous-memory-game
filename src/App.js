@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       score: 0,
       images: images,
-      isPlaying: false,
+      isPlaying: true,
     };
   }
 handleclick(){
