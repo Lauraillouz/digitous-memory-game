@@ -1,74 +1,79 @@
+ 
 import React from "react";
 
-
-// Keys
-import { v4 as uuid } from "uuid";
+// Import json
+import images from "../images.json";
 
 class Grid extends React.Component {
   constructor() {
     super();
-     const deck = this.props.images
-    .concat(this.props.images)
-    .sort(() => Math.random() - 0.5) 
-    .map(face => { 
-      return {
-        content: face,  
-        reveal: false,  
-      }
-    }) 
     this.state = {
+      clicked: false,
       showing: [],
-      showingNames: [],
       isMatching: [],
-      deck: "",
-      firstCard: null,
-      match: false,
+      images: images,
     };
   }
 
- clickCard = (imageId, imageName) => {
-  let imagesShowing = this.state.showing.length;
-    if (imagesShowing < 2) {
-      this.setState((prevState) => ({
-        ...prevState,
-        showing: [...prevState.showing, imageId],
-        showingNames: [...prevState.showingNames, imageName],
-      }));
-    } else {
-      if (this.state.showingNames[0] === this.state.showingNames[1]) {
+  componentDidUpdate() {
+    console.log(this.state.showing);
+    console.log(this.state.isMatching);
+  }
+
+  handleClick = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      clicked: true,
+    }));
+  };
+
+  clickCard = (image) => {
+    let imagesShowing = this.state.showing.length;
+    let cardName1 = this.state.showing[0];
+    let cardName2 = this.state.showing[2];
+
+    if (imagesShowing < 3) {
+      setTimeout(() => {
+        this.handleClick();
+      }, 300);
+      if (cardName1 === cardName2) {
         this.setState((prevState) => ({
           ...prevState,
-          isMatching: [...prevState, prevState.showingNames],
+          showing: [...prevState.showing, image.name, image.id],
+          isMatching: [prevState.showing, image.name],
         }));
       } else {
         this.setState((prevState) => ({
           ...prevState,
-          showing: [],
-          showingNames: [],
+          showing: [...prevState.showing, image.name, image.id],
         }));
       }
+    } else {
+      this.setState((prevState) => ({
+        ...prevState,
+        showing: [],
+      }));
     }
   };
 
-  
   render() {
     return (
       <div className="flex restrict">
-        {this.props.images.sort(() => Math.random() - 0.5).map((image) => {
+        {this.props.images.map((image) => {
           return (
-            <div className="wrap margin">
+            <div key={image.id} className="wrap margin">
               <img
                 className="card resize margin"
                 src={image.URL}
                 alt={image.name}
-                key={uuid()}
               ></img>
               <div
-                onClick={() => this.clickCard(image.id, image.name)}
+                onClick={() => this.clickCard(image)}
                 className={
-                  this.state.showing.includes(image.id) ? "" : "overlay"
+                  this.state.showing.includes(image.id)
+                    ? `${this.state.clicked}`
+                    : `overlay ${this.state.clicked}`
                 }
-                key={image.id}
               ></div>
             </div>
           );
