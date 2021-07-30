@@ -3,7 +3,6 @@ import React from "react";
 import Button from "./component/Button";
 import GameOver from "./component/GameOver";
 import Grid from "./component/Grid";
-import Test from "./component/Test";
 
 // CSS
 import "./App.css";
@@ -14,24 +13,24 @@ import images from "./images.json";
 class App extends React.Component {
   constructor() {
     super();
+    const deck = images.concat(images).sort(() => Math.random() - 0.5);
     this.state = {
       score: 0,
-      images: images,
+      deck: deck,
       isPlaying: false,
+      isclicked: null,
+      showingCards: null,
+      checkingCards: null,
+      matchingCards: null,
     };
   }
 
-  shuffle = (arr) => {
-    for (let i = 0; i > arr.length; i++) {
-      let randomId = Math.floor(Math.random() * arr.length);
-      let copyCurrent = { ...arr[i] };
-      let copyRandom = { ...arr[randomId] };
-      arr[i] = copyRandom;
-      arr[randomId] = copyCurrent;
-    }
-    return arr;
-  };
+  componentDidUpdate() {
+    console.log(this.state.showing);
+    console.log(this.state.isMatching);
+  }
 
+  // Methods
   handleclick() {
     this.setState((prevState) => {
       return {
@@ -40,6 +39,33 @@ class App extends React.Component {
       };
     });
   }
+
+  clickCard = (image) => {
+    let imagesShowing = this.state.showing.length;
+    let cardName1 = this.state.showing[0];
+    let cardName2 = this.state.showing[2];
+
+    if (imagesShowing < 3) {
+      setTimeout(() => {}, 300);
+      if (cardName1 === cardName2) {
+        this.setState((prevState) => ({
+          ...prevState,
+          showing: [...prevState.showing, image.name, image.id],
+          isMatching: [prevState.showing, image.name],
+        }));
+      } else {
+        this.setState((prevState) => ({
+          ...prevState,
+          showing: [...prevState.showing, image.name, image.id],
+        }));
+      }
+    } else {
+      this.setState((prevState) => ({
+        ...prevState,
+        showing: [],
+      }));
+    }
+  };
 
   render() {
     return (
