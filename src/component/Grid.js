@@ -1,42 +1,10 @@
 import React from "react";
-
 // Keys
 import { v4 as uuid } from "uuid";
 
 class Grid extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      showing: [],
-      showingNames: [],
-      isMatching: [],
-    };
-  }
-
-  clickCard = (imageId, imageName) => {
-    let imagesShowing = this.state.showing.length;
-    if (imagesShowing < 2) {
-      this.setState((prevState) => ({
-        ...prevState,
-        showing: [...prevState.showing, imageId],
-        showingNames: [...prevState.showingNames, imageName],
-      }));
-    } else {
-      if (this.state.showingNames[0] === this.state.showingNames[1]) {
-        this.setState((prevState) => ({
-          ...prevState,
-          isMatching: [...prevState, prevState.showingNames],
-        }));
-      } else {
-        this.setState((prevState) => ({
-          ...prevState,
-          showing: [],
-          showingNames: [],
-        }));
-      }
-    }
-  };
-
+  
+  
   /* 
     let checkMatchingImages = this.state.isMatching.length;
     if (
@@ -51,7 +19,7 @@ class Grid extends React.Component {
     }
     console.log(this.state.isMatching);
   }; */
-
+ 
   render() {
     return (
       <div className="flex restrict">
