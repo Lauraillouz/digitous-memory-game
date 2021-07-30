@@ -1,9 +1,6 @@
- 
 import React from "react";
 
 class Grid extends React.Component {
-  
-
   render() {
     return (
       <div className="flex restrict">
@@ -16,9 +13,12 @@ class Grid extends React.Component {
                 alt={image.name}
               ></img>
               <div
-                onClick={this.props.clickCard}
+                onClick={this.props.clickCard(image)}
                 className={
-                  this.props.showingCards.includes(image.id) ? "" : "overlay"
+                  this.props.showingCards &&
+                  this.props.showingCards.includes(image.id)
+                    ? ""
+                    : "overlay"
                 }
               ></div>
             </div>

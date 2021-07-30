@@ -13,9 +13,8 @@ import deck from "./images.json";
 class App extends React.Component {
   constructor() {
     super();
-    
-    this.state = {
 
+    this.state = {
       deck: deck,
       isPlaying: false,
       isclicked: null,
@@ -23,14 +22,12 @@ class App extends React.Component {
       checkingCards: null,
       matchingCards: null,
     };
-    
   }
 
   componentDidUpdate() {
-    console.log(this.state.showing);
+    console.log(this.state.showingCards);
     console.log(this.state.matchingCards);
   }
-
 
   // Methods
   handleclick() {
@@ -43,6 +40,7 @@ class App extends React.Component {
   }
 
   clickCard = (image) => {
+    console.log("prout");
     let imagesShowing = this.state.showingCards.length;
     let cardName1 = this.state.showingCards[0];
     let cardName2 = this.state.showingCards[2];
@@ -77,10 +75,13 @@ class App extends React.Component {
           <span>by Classy glassy</span>
         </div>
         {this.state.isPlaying ? (
-          <Grid deck={this.state.deck} onClick={this.clickCard} className={
-            this.state.showingCards} />
+          <Grid
+            deck={this.state.deck}
+            onClick={this.clickCard}
+            showingCards={this.state.showingCards}
+          />
         ) : (
-          <Button onClick={()=>this.handleclick()}/>
+          <Button onClick={() => this.handleclick()} />
         )}
       </div>
     );
