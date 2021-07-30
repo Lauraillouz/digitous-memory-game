@@ -77,7 +77,7 @@ class App extends React.Component {
           <span>by Classy glassy</span>
         </div>
         {this.state.isPlaying ? (
-          <Grid deck={this.state.deck} onClick={this.clickCard} className={
+          <Grid deck={this.state.deck} clickCard={this.clickCard} showingCards={
             this.state.showingCards} />
         ) : (
           <Button onClick={()=>this.handleclick()}/>

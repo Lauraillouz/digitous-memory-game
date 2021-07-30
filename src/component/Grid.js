@@ -5,6 +5,7 @@ class Grid extends React.Component {
   
 
   render() {
+    console.log(this.props.showingCards)
     return (
       <div className="flex restrict">
         {this.props.deck.map((image) => {
@@ -16,7 +17,7 @@ class Grid extends React.Component {
                 alt={image.name}
               ></img>
               <div
-                onClick={this.props.clickCard}
+                onClick={()=>{this.props.clickCard(image)}}
                 className={
                   this.props.showingCards.includes(image.id) ? "" : "overlay"
                 }
