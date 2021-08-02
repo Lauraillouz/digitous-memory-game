@@ -7,6 +7,7 @@ import Grid from "./component/Grid";
 import "./App.css";
 // Import json
 import deck from "./images.json";
+
 class App extends React.Component {
   constructor() {
     super();
@@ -20,36 +21,49 @@ class App extends React.Component {
     };
   }
 
-  
+  componentDidMount() {
+    this.shuffleDeck();
+  }
+
   componentDidUpdate() {
     if (this.state.shouldCheckCard) {
       this.checkCard();
     }
+    console.log(this.state.deck);
   }
 
   // Methods
-  // shuffleArray (deck){
-  //   let i = deck.length - 1;
-  //   for (; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     const temp = deck[i];
-  //     deck[i] = deck[j];
-  //     deck[j] = temp;
-  //   }
-  //   return deck;
-  // }
+  shuffle(deck) {
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = deck[i];
+      deck[i] = deck[j];
+      deck[j] = temp;
+    }
+    return deck;
+  }
+
+  shuffleDeck = () => {
+    const shuffled = this.shuffle(this.state.deck);
+    this.setState((prevState) => {
+      console.log("prevState", prevState);
+      return {
+        ...prevState,
+        deck: shuffled,
+      };
+    });
+  };
+
   handleclick() {
     this.setState((prevState) => {
       return {
         ...prevState,
-        // deck : this.shuffleArray(deck),
-        isPlaying:true,
+        isPlaying: true,
       };
     });
   }
-  
+
   clickCard = (image) => {
-    
     if (this.state.canClick) {
       this.setState((prevState) => {
         return {
@@ -97,8 +111,12 @@ class App extends React.Component {
           <h1>Memory Card</h1>
           <span>by Classy glassy</span>
         </div>
-        {this.state.isPlaying ? (
-
+        {this.state.matchingCards.length === 10 ? (
+          <div>
+            <h1>GameOver</h1>
+            <Button onClick={() => this.handleclick()} />
+          </div>
+        ) : this.state.isPlaying ? (
           <Grid
             deck={this.state.deck}
             clickCard={this.clickCard}

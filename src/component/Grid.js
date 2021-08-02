@@ -1,6 +1,5 @@
 import React from "react";
 
-
 class Grid extends React.Component {
   render() {
     return (
@@ -14,7 +13,6 @@ class Grid extends React.Component {
                 alt={image.name}
               ></img>
               <div
-
                 onClick={() => {
                   this.props.clickCard(image);
                 }}
@@ -27,13 +25,10 @@ class Grid extends React.Component {
                 }
               ></div>
             </div>
-
           );
         })}
-
       </div>
     );
   }
 }
 export default Grid;
-

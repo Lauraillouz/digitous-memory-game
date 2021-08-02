@@ -1,214 +1,102 @@
 [
   {
     "id": "1",
-    "name": "01",
+    "name": "card01",
     "URL": "./img/01.jpeg"
   },
   {
     "id": "2",
-    "name": "01",
+    "name": "card01",
     "URL": "./img/01.jpeg"
   },
   {
     "id": "3",
-    "name": "02",
+    "name": "card02",
     "URL": "./img/02.jpg"
   },
   {
     "id": "4",
-    "name": "02",
+    "name": "card02",
     "URL": "./img/02.jpg"
   },
   {
     "id": "5",
-    "name": "03",
+    "name": "card03",
     "URL": "./img/03.jpg"
   },
   {
     "id": "6",
-    "name": "03",
+    "name": "card03",
     "URL": "./img/03.jpg"
   },
   {
     "id": "7",
-    "name": "04",
+    "name": "card04",
     "URL": "./img/04.jpg"
   },
   {
     "id": "8",
-    "name": "04",
+    "name": "card04",
     "URL": "./img/04.jpg"
   },
   {
     "id": "9",
-    "name": "05",
+    "name": "card05",
     "URL": "./img/05.jpg"
   },
   {
     "id": "10",
-    "name": "05",
+    "name": "card05",
     "URL": "./img/05.jpg"
   },
   {
     "id": "11",
-    "name": "06",
+    "name": "card06",
     "URL": "./img/06.jpg"
   },
   {
     "id": "12",
-    "name": "06",
+    "name": "card06",
     "URL": "./img/06.jpg"
   },
   {
     "id": "13",
-    "name": "07",
+    "name": "card07",
     "URL": "./img/07.jpg"
   },
   {
     "id": "14",
-    "name": "07",
+    "name": "card07",
     "URL": "./img/07.jpg"
   },
   {
     "id": "15",
-    "name": "08",
+    "name": "card08",
     "URL": "./img/08.jpg"
   },
   {
     "id": "16",
-    "name": "08",
+    "name": "card08",
     "URL": "./img/08.jpg"
   },
   {
     "id": "17",
-    "name": "09",
+    "name": "card09",
     "URL": "./img/09.jpg"
   },
   {
     "id": "18",
-    "name": "09",
+    "name": "card09",
     "URL": "./img/09.jpg"
   },
   {
     "id": "19",
-    "name": "10",
+    "name": "card10",
     "URL": "./img/10.jpg"
   },
   {
     "id": "20",
-    "name": "10",
+    "name": "card10",
     "URL": "./img/10.jpg"
-  },
-  {
-    "id": "21",
-    "name": "11",
-    "URL": "./img/11.jpg"
-  },
-  {
-    "id": "22",
-    "name": "11",
-    "URL": "./img/11.jpg"
-  },
-  {
-    "id": "23",
-    "name": "12",
-    "URL": "./img/12.jpg"
-  },
-  {
-    "id": "24",
-    "name": "12",
-    "URL": "./img/12.jpg"
-  },
-  {
-    "id": "25",
-    "name": "13",
-    "URL": "./img/13.jpg"
-  },
-  {
-    "id": "26",
-    "name": "13",
-    "URL": "./img/13.jpg"
-  },
-  {
-    "id": "27",
-    "name": "14",
-    "URL": "./img/14.jpg"
-  },
-  {
-    "id": "28",
-    "name": "14",
-    "URL": "./img/14.jpg"
-  },
-  {
-    "id": "29",
-    "name": "15",
-    "URL": "./img/15.jpg"
-  },
-  {
-    "id": "30",
-    "name": "15",
-    "URL": "./img/15.jpg"
-  },
-  {
-    "id": "31",
-    "name": "16",
-    "URL": "./img/16.jpg"
-  },
-  {
-    "id": "32",
-    "name": "16",
-    "URL": "./img/16.jpg"
-  },
-  {
-    "id": "33",
-    "name": "17",
-    "URL": "./img/17.jpg"
-  },
-  {
-    "id": "34",
-    "name": "17",
-    "URL": "./img/17.jpg"
-  },
-  {
-    "id": "35",
-    "name": "18",
-    "URL": "./img/18.jpg"
-  },
-  {
-    "id": "36",
-    "name": "18",
-    "URL": "./img/18.jpg"
-  },
-  {
-    "id": "37",
-    "name": "19",
-    "URL": "./img/19.png"
-  },
-  {
-    "id": "38",
-    "name": "19",
-    "URL": "./img/19.png"
-  },
-  {
-    "id": "39",
-    "name": "20",
-    "URL": "./img/20.jpg"
-  },
-  {
-    "id": "40",
-    "name": "20",
-    "URL": "./img/20.jpg"
-  },
-  {
-    "id": "41",
-    "name": "21",
-    "URL": "./img/21.jpg"
-  },
-  {
-    "id": "42",
-    "name": "21",
-    "URL": "./img/21.jpg"
   }
 ]
-
-
