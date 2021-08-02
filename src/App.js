@@ -21,6 +21,7 @@ class App extends React.Component {
       showingCards: [],
       checkingCards: null,
       matchingCards: null,
+      overlay: "overlay",
     };
   }
 
@@ -39,24 +40,28 @@ class App extends React.Component {
     });
   }
 
-  clickCard = (image) => {
-    console.log("prout");
+  // Tentative gestion d'overlay
+  setOverlay = () => {
+    if (!this.state.showingCards || !this.state.matchingCards) {
+      return this.state.overlay;
+    }
+  };
+
+  clickCard = (card) => {
     let imagesShowing = this.state.showingCards.length;
     let cardName1 = this.state.showingCards[0];
     let cardName2 = this.state.showingCards[2];
 
     if (imagesShowing < 3) {
-      setTimeout(() => {}, 300);
-      if (cardName1 === cardName2) {
+      if (cardName1 === cardName2 && imagesShowing === 2) {
         this.setState((prevState) => ({
           ...prevState,
-          showingCards: [...prevState.showingCards, image.name, image.id],
-          matchingCards: [prevState.showingCards, image.name],
+          matchingCards: [prevState.showingCards, card.name],
         }));
       } else {
         this.setState((prevState) => ({
           ...prevState,
-          showingCards: [...prevState.showingCards, image.name, image.id],
+          showingCards: [...prevState.showingCards, card.name, card.id],
         }));
       }
     } else {
@@ -77,8 +82,9 @@ class App extends React.Component {
         {this.state.isPlaying ? (
           <Grid
             deck={this.state.deck}
-            onClick={this.clickCard}
+            clickCard={this.clickCard}
             showingCards={this.state.showingCards}
+            matchingCards={this.state.matchingCards}
           />
         ) : (
           <Button onClick={() => this.handleclick()} />

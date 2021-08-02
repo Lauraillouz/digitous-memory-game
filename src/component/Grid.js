@@ -13,7 +13,9 @@ class Grid extends React.Component {
                 alt={image.name}
               ></img>
               <div
-                onClick={this.props.clickCard(image)}
+                onClick={() => {
+                  this.props.clickCard(image);
+                }}
                 className={
                   this.props.showingCards &&
                   this.props.showingCards.includes(image.id)
