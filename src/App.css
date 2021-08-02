@@ -64,8 +64,7 @@ button:hover {
   flex-wrap: wrap;
 }
 .restrict {
-  width: 900px;
-  margin: auto 0;
+  margin: 0 50px 0 50px;
 }
 .margin {
   margin: 10px;

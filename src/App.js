@@ -13,69 +13,83 @@ class App extends React.Component {
     this.state = {
       deck: deck,
       isPlaying: false,
-      isclicked: null,
       showingCards: [],
-      checkingCards: null,
-      matchingCards: null,
+      shouldCheckCard: false,
+      matchingCards: [],
+      canClick: true,
     };
   }
+
+  
   componentDidUpdate() {
-    if(this.state.showingCards.length===3){
-      this.checkCard()
-    } 
-  }
-   shuffleArray (deck){
-    let i = deck.length - 1;
-    for (; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = deck[i];
-      deck[i] = deck[j];
-      deck[j] = temp;
+    if (this.state.shouldCheckCard) {
+      this.checkCard();
     }
-    return deck;
-}
+  }
+
   // Methods
+  // shuffleArray (deck){
+  //   let i = deck.length - 1;
+  //   for (; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     const temp = deck[i];
+  //     deck[i] = deck[j];
+  //     deck[j] = temp;
+  //   }
+  //   return deck;
+  // }
   handleclick() {
     this.setState((prevState) => {
       return {
         ...prevState,
-        deck : this.shuffleArray,
+        // deck : this.shuffleArray(deck),
         isPlaying:true,
       };
     });
   }
+  
   clickCard = (image) => {
-      this.setState((prevState) =>({
-        ...prevState,
-        showingCards : [...prevState.showingCards,image.name, image.id]
-    }))
-  }
-  checkCard = (image) => {
-    let imagesShowing = this.state.showingCard;
-    let cardName1 = this.state.showingCards[0];
-    let cardName2 = this.state.showingCards[2];
-    console.log(this.state.showingCards)
-    if (imagesShowing > 1) {
-      setTimeout(() => {}, 300);
-      if (cardName1 === cardName2) {
-        this.setState((prevState) => ({
+    
+    if (this.state.canClick) {
+      this.setState((prevState) => {
+        return {
           ...prevState,
           showingCards: [...prevState.showingCards, image.name, image.id],
-          matchingCards: [prevState.showingCards, image.name],
-        }));
-      // } else {
-      //   this.setState((prevState) => ({
-      //     ...prevState,
-      //     showingCards: [...prevState.showingCards, image.name, image.id],
-      //   }));
-      }
-    } else {
-      this.setState((prevState) => ({
-        ...prevState,
-        showingCards: [],
-      }));
+          shouldCheckCard: true,
+          canClick: prevState.showingCards.length === 2 ? false : true,
+        };
+      });
     }
   };
+
+  checkCard = () => {
+    let imagesShowing = this.state.showingCards.length;
+    let cardName1 = this.state.showingCards[0];
+    let cardName2 = this.state.showingCards[2];
+
+    if (imagesShowing === 4) {
+      if (cardName1 === cardName2) {
+        console.log("match");
+        this.setState((prevState) => ({
+          ...prevState,
+          showingCards: [],
+          matchingCards: [...prevState.matchingCards, cardName1],
+          shouldCheckCard: false,
+          canClick: true,
+        }));
+      } else {
+        setTimeout(() => {
+          this.setState((prevState) => ({
+            ...prevState,
+            showingCards: [],
+            shouldCheckCard: false,
+            canClick: true,
+          }));
+        }, 1000);
+      }
+    }
+  };
+
   render() {
     return (
       <div className="container">
@@ -84,10 +98,15 @@ class App extends React.Component {
           <span>by Classy glassy</span>
         </div>
         {this.state.isPlaying ? (
-          <Grid deck={this.state.deck} clickCard={this.clickCard} showingCards={
-            this.state.showingCards} />
+
+          <Grid
+            deck={this.state.deck}
+            clickCard={this.clickCard}
+            showingCards={this.state.showingCards}
+            matchingCards={this.state.matchingCards}
+          />
         ) : (
-          <Button onClick={()=>this.handleclick()}/>
+          <Button onClick={() => this.handleclick()} />
         )}
       </div>
     );
