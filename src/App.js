@@ -30,8 +30,6 @@ class App extends React.Component {
     if (this.state.shouldCheckCard) {
       this.checkCard();
     }
-    console.log("is playing?", this.state.isPlaying);
-    console.log("replay?", this.state.replay);
   }
 
   ////// METHODS //////
@@ -127,7 +125,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.matchingCards.length === 3);
     return (
       <div className="container">
         <div className="head">
@@ -135,7 +132,7 @@ class App extends React.Component {
           <span>by Classy glassy</span>
         </div>
         <div>
-          {this.state.matchingCards.length === 3 ? (
+          {this.state.matchingCards.length === 21 ? (
             <div>
               <GameOver onClick={() => this.handleReplay()} />
             </div>
