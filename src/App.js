@@ -13,6 +13,7 @@ class App extends React.Component {
     super();
     this.state = {
       deck: deck,
+      replay: false,
       isPlaying: false,
       showingCards: [],
       shouldCheckCard: false,
@@ -29,10 +30,13 @@ class App extends React.Component {
     if (this.state.shouldCheckCard) {
       this.checkCard();
     }
-    console.log(this.state.deck);
+    console.log("is playing?", this.state.isPlaying);
+    console.log("replay?", this.state.replay);
   }
 
-  // Methods
+  ////// METHODS //////
+
+  // Suffle cards
   shuffle(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -42,11 +46,9 @@ class App extends React.Component {
     }
     return deck;
   }
-
   shuffleDeck = () => {
     const shuffled = this.shuffle(this.state.deck);
     this.setState((prevState) => {
-      console.log("prevState", prevState);
       return {
         ...prevState,
         deck: shuffled,
@@ -54,7 +56,8 @@ class App extends React.Component {
     });
   };
 
-  handleclick() {
+  // Start game
+  handleClick() {
     this.setState((prevState) => {
       return {
         ...prevState,
@@ -63,6 +66,7 @@ class App extends React.Component {
     });
   }
 
+  // Saving clicked cards
   clickCard = (image) => {
     if (this.state.canClick) {
       this.setState((prevState) => {
@@ -76,6 +80,7 @@ class App extends React.Component {
     }
   };
 
+  // Check if cards are pairs
   checkCard = () => {
     let imagesShowing = this.state.showingCards.length;
     let cardName1 = this.state.showingCards[0];
@@ -83,7 +88,6 @@ class App extends React.Component {
 
     if (imagesShowing === 4) {
       if (cardName1 === cardName2) {
-        console.log("match");
         this.setState((prevState) => ({
           ...prevState,
           showingCards: [],
@@ -104,28 +108,48 @@ class App extends React.Component {
     }
   };
 
+  handleReplay = () => {
+    this.resetGame();
+    this.shuffleDeck();
+    this.handleClick();
+  };
+
+  resetGame = () => {
+    this.setState(() => ({
+      deck: deck,
+      isPlaying: false,
+      replay: true,
+      showingCards: [],
+      shouldCheckCard: false,
+      matchingCards: [],
+      canClick: true,
+    }));
+  };
+
   render() {
+    console.log(this.state.matchingCards.length === 3);
     return (
       <div className="container">
         <div className="head">
           <h1>Memory Card</h1>
           <span>by Classy glassy</span>
         </div>
-        {this.state.matchingCards.length === 10 ? (
-          <div>
-            <h1>GameOver</h1>
-            <Button onClick={() => this.handleclick()} />
-          </div>
-        ) : this.state.isPlaying ? (
-          <Grid
-            deck={this.state.deck}
-            clickCard={this.clickCard}
-            showingCards={this.state.showingCards}
-            matchingCards={this.state.matchingCards}
-          />
-        ) : (
-          <Button onClick={() => this.handleclick()} />
-        )}
+        <div>
+          {this.state.matchingCards.length === 3 ? (
+            <div>
+              <GameOver onClick={() => this.handleReplay()} />
+            </div>
+          ) : this.state.isPlaying ? (
+            <Grid
+              deck={this.state.deck}
+              clickCard={this.clickCard}
+              showingCards={this.state.showingCards}
+              matchingCards={this.state.matchingCards}
+            />
+          ) : (
+            <Button onClick={() => this.handleClick()} />
+          )}
+        </div>
       </div>
     );
   }
