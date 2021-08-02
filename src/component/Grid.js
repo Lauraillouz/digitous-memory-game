@@ -17,8 +17,9 @@ class Grid extends React.Component {
                   this.props.clickCard(image);
                 }}
                 className={
-                  this.props.showingCards &&
-                  this.props.showingCards.includes(image.id)
+                  (this.props.showingCards &&
+                    this.props.showingCards.includes(image.id)) ||
+                  this.props.matchingCards.includes(image.name)
                     ? ""
                     : "overlay"
                 }

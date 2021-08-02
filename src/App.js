@@ -17,17 +17,17 @@ class App extends React.Component {
     this.state = {
       deck: deck,
       isPlaying: false,
-      isclicked: null,
       showingCards: [],
-      checkingCards: null,
-      matchingCards: null,
-      overlay: "overlay",
+      shouldCheckCard: false,
+      matchingCards: [],
+      canClick: true,
     };
   }
 
   componentDidUpdate() {
-    console.log(this.state.showingCards);
-    console.log(this.state.matchingCards);
+    if (this.state.shouldCheckCard) {
+      this.checkCard();
+    }
   }
 
   // Methods
@@ -47,28 +47,47 @@ class App extends React.Component {
     }
   };
 
-  clickCard = (card) => {
+  clickCard = (image) => {
+    console.log("card is clicked");
+    if (this.state.canClick) {
+      this.setState((prevState) => {
+        console.log("prevState", prevState.showingCards);
+        return {
+          ...prevState,
+          showingCards: [...prevState.showingCards, image.name, image.id],
+          shouldCheckCard: true,
+          canClick: prevState.showingCards.length === 2 ? false : true,
+        };
+      });
+    }
+  };
+
+  checkCard = () => {
     let imagesShowing = this.state.showingCards.length;
     let cardName1 = this.state.showingCards[0];
     let cardName2 = this.state.showingCards[2];
+    console.log(this.state.showingCards);
 
-    if (imagesShowing < 3) {
-      if (cardName1 === cardName2 && imagesShowing === 2) {
+    if (imagesShowing === 4) {
+      if (cardName1 === cardName2) {
+        console.log("match");
         this.setState((prevState) => ({
           ...prevState,
-          matchingCards: [prevState.showingCards, card.name],
+          showingCards: [],
+          matchingCards: [...prevState.matchingCards, cardName1],
+          shouldCheckCard: false,
+          canClick: true,
         }));
       } else {
-        this.setState((prevState) => ({
-          ...prevState,
-          showingCards: [...prevState.showingCards, card.name, card.id],
-        }));
+        setTimeout(() => {
+          this.setState((prevState) => ({
+            ...prevState,
+            showingCards: [],
+            shouldCheckCard: false,
+            canClick: true,
+          }));
+        }, 1000);
       }
-    } else {
-      this.setState((prevState) => ({
-        ...prevState,
-        showingCards: [],
-      }));
     }
   };
 
